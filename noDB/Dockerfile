@@ -1,10 +1,10 @@
 FROM ansible/ubuntu14.04-ansible:stable
 
 RUN mkdir /provision
-ADD ansible /provision
+ADD ../ansible /provision
 WORKDIR /provision
 
-RUN ansible-playbook lemp.yml -c local
+RUN ansible-playbook lemp-noDB.yml -c local
 
 EXPOSE 80
 
