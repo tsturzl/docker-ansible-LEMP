@@ -11,7 +11,7 @@
       - python-setuptools
       - mcrypt
       - nginx
-      - nodejs
+      - mysql-client
       - php5-cli
       - php5-curl
       - php5-intl
@@ -49,6 +49,3 @@
 
   - name: configure supervisord services
     copy: src=/provision/supervisord/ dest=/etc/supervisord/ directory_mode=yes
-
-  - name: disable mysql daemon(noDB mode)
-    file: path=/etc/supervisord/mysql.conf state=absent
