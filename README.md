@@ -8,7 +8,7 @@ If you run your database on a dedicated server, or in a different container(or y
 
 ## Up and running
 
-The web root is configured at `/share/public`. So you if you decide to pull code into the shared directory you can compile it to a ./public directory in the project and mount to '/share/`. If this is not what you plan to do, then simply mount your directory to `/share/public`.
+The web root is configured at `/share/public`. So you if you decide to pull code into the shared directory you can compile it to a ./public directory in the project and mount to `/share/`. If this is not what you plan to do, then simply mount your directory to `/share/public`.
 
 Example:
 
