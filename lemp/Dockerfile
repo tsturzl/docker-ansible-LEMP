@@ -6,7 +6,7 @@ WORKDIR /provision
 
 RUN ansible-playbook lemp.yml -c local
 
-EXPOSE 80,3306
+EXPOSE 80 3306
 
 #Expose webroot, ssl directory, 
 VOLUME ["/etc/nginx/sites-available", "/etc/nginx/ssl", "/var/log/nginx", "/var/www/html"]
