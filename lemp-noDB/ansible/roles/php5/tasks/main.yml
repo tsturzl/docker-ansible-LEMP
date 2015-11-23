@@ -1,0 +1,26 @@
+---
+
+# Provision PHP5, FPM, and php modules
+
+- name: install packages
+  apt: name={{ item }} update_cache=yes state=latest
+  with_items:
+    - php5-cli
+    - php5-curl
+    - php5-intl
+    - php5-json
+    - php5-fpm
+    - php5-mcrypt
+    - php5-mysqlnd
+
+- name: setup php5-fpm config
+  template: src=php.fpm.ini dest=/etc/php5/fpm/php.ini
+
+- name: setup php5-cli config
+  template: src=php.cli.ini dest=/etc/php5/cli/php.ini
+
+- name: diable php5-fpm daemon
+  lineinfile: dest=/etc/php5/fpm/php-fpm.conf regexp=daemonize* line='daemonize = no'
+
+- name: enable php5-mcrypt
+  shell: php5enmod mcrypt

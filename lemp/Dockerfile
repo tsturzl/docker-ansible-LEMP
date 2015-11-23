@@ -6,7 +6,10 @@ WORKDIR /provision
 
 RUN ansible-playbook lemp.yml -c local
 
-EXPOSE 80
+EXPOSE 80,3306
 
-#kick of multiple processes in container with supervisord
+#Expose webroot, ssl directory, 
+VOLUME ["/etc/nginx/sites-available", "/etc/nginx/ssl", "/var/log/nginx", "/var/www/html"]
+
+#kick off multiple processes in container with supervisord
 ENTRYPOINT ["/usr/local/bin/supervisord", "-c", "/etc/supervisord.conf"]

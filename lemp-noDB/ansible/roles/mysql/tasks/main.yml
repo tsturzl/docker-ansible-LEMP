@@ -1,0 +1,12 @@
+---
+
+# Provision MySQL
+
+- name: Install MySQL
+  apt: name={{ item }} update_cache=yes state=latest
+  with_items:
+    - mysql-client
+    - mysql-server
+
+- name: Configure mysql-server
+  template: src=my.cnf dest=/etc/mysql/my.cnf

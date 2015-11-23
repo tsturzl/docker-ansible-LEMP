@@ -1,0 +1,9 @@
+---
+
+# Provision Nginx
+
+- name: install packages
+  apt: name=nginx update_cache=yes state=latest
+
+- name: diable nginx daemon
+  lineinfile: dest=/etc/nginx/nginx.conf line='daemon off;'

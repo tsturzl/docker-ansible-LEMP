@@ -1,0 +1,25 @@
+---
+
+# Provision supervisord, setup services to manage
+
+- name: install supervisord
+  easy_install: name=supervisor
+
+- name: ensure supervisord service directory exists
+  file: path=/etc/supervisord/ state=directory mode=0755
+
+- name: setup supervisord
+  template: src=supervisor.conf dest=/etc/supervisord.conf
+
+- name: Configure Supervisord cron
+  template: src=supervisord/cron.conf dest=/etc/supervisord/cron.conf
+
+- name: Configure Supervisord mysql
+  template: src=supervisord/mysql.conf dest=/etc/supervisord/mysql.conf
+  when: db == true
+
+- name: Configure Supervisord nginx
+  template: src=supervisord/nginx.conf dest=/etc/supervisord/nginx.conf
+
+- name: Configure Supervisord php5-fpm
+  template: src=supervisord/php5-fpm.conf dest=/etc/supervisord/php5-fpm.conf

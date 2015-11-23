@@ -1,0 +1,12 @@
+---
+
+# Install common dependencies
+
+- name: Install system packages
+  apt: name={{ item }} update_cache=yes state=latest
+  with_items:
+    - git
+    - curl
+    - python
+    - python-setuptools
+    - mcrypt
