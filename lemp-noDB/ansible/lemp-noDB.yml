@@ -4,9 +4,9 @@
 
 - hosts: localhost
   vars:
-    db: no
+    - db: false
   roles:
   - role: common
   - role: nginx
   - role: php5
-  - {role: supervisord, db: "{{ db }}"}
+  - role: supervisord
